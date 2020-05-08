@@ -20,22 +20,14 @@ global variables
 /* =========================================================================
 search form panel
 ========================================================================== */
-//make search form expandable only on small screens
-function searchFormExpandable() {
-    if (mq.end.matches) {
-        $(selectors.searchForm).expandable('revive');
-        $(selectors.advancedSearchForm).expandable('revive');
-    }
-    else {
-        $(selectors.searchForm).expandable('kill');
-        $(selectors.searchForm).children('div').removeAttr('style');
-        $(selectors.advancedSearchForm).expandable('kill');
-        $(selectors.advancedSearchForm).children('div').removeAttr('style');
-    }
-    return;
-}
-searchFormExpandable();
-mq.end.addListener(searchFormExpandable);
+
+
+$(function(){
+  $('.search-button').click(function(){
+   $('.search-toggle').slideToggle('fast');
+   $('.search-button').toggleClass('open');
+  });
+});
 
 /* =========================================================================
 slideout filters for search results on small screens
