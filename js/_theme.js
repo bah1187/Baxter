@@ -37,7 +37,7 @@ if ($('#search-results').length == 1) window.APP.MODELS.FilterSlideOut.create({
     animationSpeed: 200,
     pageWrapId: 'page',
     filterType: 'search',
-    openToggle: 'Filter',
+    openToggle: 'Filters',
     closeToggle: 'Close'
 });
 
@@ -70,3 +70,21 @@ $(function(){
    $('.js-nav-toggle').slideToggle("fast");
   });
 });
+
+
+/* =========================================================================
+Tabbed Job Lists
+========================================================================== */
+$(document).ready(function(){
+
+	$('.tab-link').click(function(){
+		var tab_id = $(this).attr('data-tab');
+
+		$('.tab-link').removeClass('current');
+		$('.tab-content').removeClass('current');
+
+		$(this).addClass('current');
+		$("#"+tab_id).addClass('current');
+	})
+
+})
