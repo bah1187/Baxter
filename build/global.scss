@@ -420,6 +420,14 @@ a.access-link {
     height: 15px;
     margin: 0 0 0 8px;
     vertical-align: middle;
+		transition: transform .2s cubic-bezier(0,-2,0,3),-webkit-transform .2s cubic-bezier(0,-2,0,3);
+	}
+
+	&:hover, &:focus {
+		&:after {
+			transform: translateX(.3em);
+			transition: transform .2s cubic-bezier(0,-2,0,3),-webkit-transform .2s cubic-bezier(0,-2,0,3);
+		}
 	}
 }
 
@@ -578,6 +586,29 @@ main {
     margin: 0 auto;
 		padding: 0 15px;
 }
+
+/* =================================================================
+Covid banner
+================================================================= */
+.system-alert-css {
+
+
+	#system-message {
+		color: #fff !important;
+		font-size: 14px;
+		background: $blue !important;
+		padding: 40px !important;
+		@include breakpoint($end-small) {
+			font-size: 14px !important;
+			text-align: left !important;
+			line-height: 24px !important;
+		}
+	}
+}
+
+
+
+
 /* =================================================================
 Header/Navigation
 ================================================================= */
@@ -622,7 +653,7 @@ header {
   width: 100%;
   left: 0;
   top: 71px;
-  padding: 20px 10px 0;
+  padding: 10px 10px 0;
   @include breakpoint(1000px) {
     display: flex !important;
     justify-content: space-between;
@@ -681,6 +712,14 @@ header {
       padding: 0 10px 0 0;
       margin-bottom: 0;
     }
+
+		&.saved-jobs-item {
+			@include breakpoint(1000px) {
+				position: absolute;
+				right: 91px;
+				bottom: 25px;
+			}
+		}
 
     &:last-of-type {
       margin-bottom: 0;
@@ -754,12 +793,18 @@ Banners
 			}
 
 
-			#home & {
+			#home &,
+			#error &,
+			#Unsubscribe &,
+			#verify &,
+			#ja-mgmt &,
+			#job-match & {
 				background: url("../v2_0/img/banners/banner-home.jpg") no-repeat;
 				background-size: cover;
 				background-position: center;
 			}
-			#search & {
+			#search &,
+			#job-location & {
 				background: url("../v2_0/img/banners/banner-sr.jpg") no-repeat;
 				background-size: cover;
 				background-position: center;
@@ -784,6 +829,9 @@ Banners
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
 		padding: 0 15px;
+		@include breakpoint($end-small) {
+			display: none;
+		}
 	}
 
 
@@ -873,6 +921,88 @@ Footer
 }
 
 
+
+
+/*! =================================================================
+Saved Jobs Number
+================================================================= */
+
+.saved-jobs-number {
+
+
+
+
+
+	&__link {
+		background: url("../v2_0/img/star.png") no-repeat;
+		width: 41px;
+    height: 40px;
+		background-color: transparent;
+		background-position: 0 0;
+    background-repeat: no-repeat;
+		display: block;
+		position: relative;
+		// top: 0;
+
+
+		&:after {
+			content: "Saved Jobs";
+			display: flex;
+			align-items: center;
+			height: 100%;
+			width: 100px;
+			position: absolute;
+    	left: 48px;
+			font-size: 16px;
+			font-family: $geogrotesque-font;
+			font-weight: $weight-bold;
+		}
+
+	}
+	&__total {
+		position: absolute;
+		top: 54%;
+ 		left: 50%;
+ 		transform: translateX(-50%) translateY(-50%);
+		font-size: 16px;
+		font-family: $geogrotesque-font;
+		font-weight: $weight-bold;
+	}
+
+	> div {
+		margin-top: 20px;
+		display: none;
+		@include breakpoint(1000px) {
+			position: absolute;
+			background: #fff;
+			width: 400px;
+			left: -260px;
+
+		}
+
+		ul {
+			margin: 0;
+			display: block;
+			text-align: left;
+		}
+
+		li {
+			width: 100%;
+			margin-bottom: 10px !important;
+
+
+			a {
+				text-align: left;
+			}
+
+			span {
+				text-align: left;
+			}
+		}
+	}
+
+}
+
 /*! =================================================================
 Universal Styles
 ================================================================= */
@@ -961,6 +1091,10 @@ Job Lists Tabs
 			height: 16px;
 			margin: 0 auto;
 		}
+	}
+
+	&:hover, &:hover {
+		color: $blue;
 	}
 }
 
@@ -1129,6 +1263,12 @@ Related Content
 			p {
 				color: $blue;
 			}
+
+			span:after {
+				transform: translateX(5px);
+				transition: transform 0.2s cubic-bezier(0, -2, 0, 3),-webkit-transform 0.2s cubic-bezier(0, -2, 0, 3);
+			}
+
 		}
 	}
 
@@ -1184,6 +1324,7 @@ Related Content
 			height: 15px;
 			margin: 0 0 0 8px;
 			vertical-align: middle;
+			transition: transform 0.2s cubic-bezier(0, -2, 0, 3),-webkit-transform 0.2s cubic-bezier(0, -2, 0, 3);
 		}
 	}
 }
@@ -1400,6 +1541,14 @@ search form
 			height: 15px;
 			margin: 0 0 0 15px;
 			vertical-align: middle;
+			transition: transform .2s cubic-bezier(0,-2,0,3),-webkit-transform .2s cubic-bezier(0,-2,0,3);
+		}
+
+		&:hover, &:focus {
+			&:after {
+				transform: translateX(5px);
+				transition: transform .2s cubic-bezier(0,-2,0,3),-webkit-transform .2s cubic-bezier(0,-2,0,3);
+			}
 		}
 	}
 
@@ -1469,6 +1618,14 @@ Job Matching Callout
 			text-align: left;
 			background: rgba(0, 51, 153, .8);
 		}
+
+		&:hover, &:focus {
+			span {
+			transform: translateX(5px);
+    	transition: transform 0.2s cubic-bezier(0, -2, 0, 3),-webkit-transform 0.2s cubic-bezier(0, -2, 0, 3);
+		}
+
+		}
 	}
 
 	h2 {
@@ -1523,6 +1680,7 @@ Job Matching Callout
 			height: 12px;
 			display: inline-block;
 			margin-left: 13px;
+			transition: transform .2s cubic-bezier(0,-2,0,3),-webkit-transform .2s cubic-bezier(0,-2,0,3);
 		}
 	}
 }
@@ -1768,6 +1926,14 @@ search results - pagination
 	    height: 15px;
 	    margin: 0 0 0 8px;
 	    vertical-align: middle;
+			transition: transform 0.2s cubic-bezier(0, -2, 0, 3),-webkit-transform 0.2s cubic-bezier(0, -2, 0, 3);
+		}
+
+		&:hover, &:focus {
+			&:after {
+				transform: translateX(5px);
+				transition: transform 0.2s cubic-bezier(0, -2, 0, 3),-webkit-transform 0.2s cubic-bezier(0, -2, 0, 3);
+			}
 		}
 	}
 
@@ -1791,6 +1957,14 @@ search results - pagination
 			height: 15px;
 			margin: 0 8px 0 0;
 			transform: rotate(180deg);
+			transition: transform 0.2s cubic-bezier(0, -2, 0, 3),-webkit-transform 0.2s cubic-bezier(0, -2, 0, 3);
+		}
+
+		&:hover, &:focus {
+			&:before {
+				transform: translateX(5px) rotate(180deg);
+				transition: transform 0.2s cubic-bezier(0, -2, 0, 3),-webkit-transform 0.2s cubic-bezier(0, -2, 0, 3);
+			}
 		}
 
 		&.disabled {
@@ -1822,6 +1996,14 @@ search results - pagination
 		    height: 15px;
 		    margin: 0 0 0 8px;
 		    vertical-align: middle;
+				transition: transform 0.2s cubic-bezier(0, -2, 0, 3),-webkit-transform 0.2s cubic-bezier(0, -2, 0, 3);
+		}
+
+		&:hover, &:focus {
+			&:after {
+				transform: translateX(5px);
+				transition: transform 0.2s cubic-bezier(0, -2, 0, 3),-webkit-transform 0.2s cubic-bezier(0, -2, 0, 3);
+			}
 		}
 	}
 }
@@ -2224,6 +2406,9 @@ Job alerts form
 				text-transform: uppercase;
 				font-weight: $weight-semi-bold;
 				width: 160px !important;
+				@include breakpoint($end-small) {
+					margin: 0 auto;
+				}
 
 				&:after {
 					content: " ";
@@ -2233,9 +2418,34 @@ Job alerts form
 					height: 15px;
 					margin: 0 0 0 8px;
 					vertical-align: middle;
+					transition: transform 0.2s cubic-bezier(0, -2, 0, 3),-webkit-transform 0.2s cubic-bezier(0, -2, 0, 3);
+				}
+
+				&:hover, &:focus {
+					&:after {
+					transform: translateX(5px);
+					transition: transform 0.2s cubic-bezier(0, -2, 0, 3),-webkit-transform 0.2s cubic-bezier(0, -2, 0, 3);
+				}
 				}
 			}
 		}
+	}
+}
+
+p.form-field.ccpa-eu-tmp-notice {
+	width: 100%;
+	text-align: center;
+	padding: 20px 0 0;
+	font-size: 14px;
+	@include breakpoint($end-small) {
+		padding: 30px 0;
+		max-width: 612px;
+		margin: 0 auto;
+		float: none;
+	}
+
+	a {
+		  color: #0000FF;
 	}
 }
 
@@ -2348,6 +2558,14 @@ job details - style overrides for ATS description
 		height: 15px;
 		margin: 0 0 0 8px;
 		vertical-align: middle;
+		transition: transform .2s cubic-bezier(0,-2,0,3),-webkit-transform .2s cubic-bezier(0,-2,0,3);
+	}
+
+	&:hover, &:focus {
+		&:after {
+			transform: translateX(5px);
+			transition: transform .2s cubic-bezier(0,-2,0,3),-webkit-transform .2s cubic-bezier(0,-2,0,3);
+		}
 	}
 }
 
@@ -2371,6 +2589,14 @@ job details - style overrides for ATS description
 		height: 15px;
 		margin: 0 0 0 8px;
 		vertical-align: middle;
+		transition: transform .2s cubic-bezier(0,-2,0,3),-webkit-transform .2s cubic-bezier(0,-2,0,3);
+	}
+
+	&:hover, &:focus {
+		&:after {
+			transform: translateX(5px);
+			transition: transform .2s cubic-bezier(0,-2,0,3),-webkit-transform .2s cubic-bezier(0,-2,0,3);
+		}
 	}
 }
 
@@ -2521,6 +2747,195 @@ Location Callout
 }
 
 /* =================================================================
+Job Locations page
+================================================================= */
+
+#job-location {
+
+	.wrapper {
+		@include breakpoint($end-small) {
+			margin-bottom: 50px;
+		}
+	}
+
+}
+
+
+.job-map {
+    padding: 40px 0;
+    @include breakpoint($end-small) {
+        padding: 50px 0;
+    }
+
+     h2 {
+			 font-family: $geogrotesque-font;
+			 font-weight: $weight-light;
+       font-size: 26px;
+       text-transform: uppercase;
+       margin-bottom: 20px;
+			 @include breakpoint($end-small) {
+				 font-size: 36px;
+			 }
+    }
+
+     & > h2 {
+        font-size: 27px;
+        font-weight: 500;
+
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        @include breakpoint($end-small) {
+            font-size: 36px;
+        }
+    }
+
+
+
+    h3 {
+				font-family: $geogrotesque-font;
+				font-weight: $weight-light;
+        font-size: 20px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+}
+
+.js .job-map .job-map-canvas {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.job-map-nearby {
+    margin-bottom: 30px;
+    text-align: center;
+
+    @include breakpoint($end-small) {
+        text-align: left;
+        float: left;
+        width: 60%;
+    }
+
+    h3 {
+        margin-bottom: 10px;
+    }
+
+    ul {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+
+        li {
+            width: 48%;
+            margin-bottom: 12px;
+            word-break: break-word;
+            @include breakpoint($end-small) {
+                width: 49%;
+                margin-bottom: 0;
+            }
+             @include breakpoint(1400px) {
+                width: 24%;
+            }
+
+            a {
+                padding: 15px 10px;
+                margin: 5px 0;
+                transition: 0.25s;
+                font-size: 17px;
+                text-align: center;
+                text-transform: uppercase;
+                display: block;
+            	background: $blue;
+        		text-transform: uppercase;
+        		color: #fff;
+        		// font-weight: $bold;
+        		font-size: 20px;
+        		text-align: center;
+
+            }
+        }
+
+    }
+}
+
+.job-map .job-map-directions input:not([type="submit"]), .job-map .job-map-directions select {
+   border: 1px solid #b3adac;
+    color: #493d3b;
+    border-radius: 2px;
+    width: 100%;
+    height: 52px;
+    -webkit-appearance: none;
+    padding-left: 15px;
+    font-size: 16px;
+}
+
+.job-map-directions {
+    text-align: center;
+
+    @include breakpoint($end-small) {
+        text-align: left;
+        float: right;
+        width: 35%;
+    }
+
+    label {
+        margin-bottom: 5px;
+        text-align: left;
+    }
+
+		button {
+			border: 1px solid $blue;
+			border-radius: 30px;
+			width: 80px;
+			font-family: "geogrotesque",sans-serif;
+			padding: 10px 0;
+			display: block;
+			color: $blue;
+
+			font-weight: $weight-semi-bold;
+			text-align: center;
+
+			&:after {
+				content: " ";
+		    background: url(../v2_0/img/blue-arrow.png) no-repeat;
+		    display: inline-block;
+		    width: 9px;
+		    height: 15px;
+		    margin: 0 0 0 8px;
+		    vertical-align: middle;
+			}
+		}
+}
+
+.job-map .job-map-directions p {
+    margin-bottom: 12px;
+}
+
+.job-map input[type="submit"] {
+   width: 128px;
+	background: $blue;
+	text-transform: uppercase;
+	color: #fff;
+
+	font-size: 20px;
+	padding: 10px;
+	display: inline-block;
+	text-align: center;
+}
+
+.job-map-active {
+    font-weight: 500 !important;
+    opacity: .7;
+}
+
+/* =================================================================
 language redirection
 ================================================================= */
 .language-redirection {
@@ -2541,11 +2956,346 @@ language redirection
 /* =================================================================
 job matching page
 ================================================================= */
+
+#job-match {
+	.wrapper {
+		@include breakpoint($end-small) {
+			margin: 0 auto 60px;
+		}
+	}
+	#job-matching-results {
+		margin: 30px 0 0;
+
+		h1 {
+			font-family: $geogrotesque-font;
+	    font-size: 24px;
+	    text-transform: capitalize;
+	    margin: 0 0 30px;
+			@include breakpoint($end-small) {
+				font-size: 32px;
+			}
+		}
+
+		ul {
+			margin: 0 -15px;
+		}
+
+		li {
+
+
+			a {
+				padding: 15px;
+				border-top: 1px solid #d0d1d3;
+			}
+
+			h2 {
+				color: $blue;
+		    font-family: $geogrotesque-font;
+		    font-weight: $weight-semi-bold;
+		    font-size: 24px;
+				line-height: 1;
+			}
+
+			span {
+				display: block;
+			}
+		}
+	}
+
+	#job-matching-logout {
+		@include clearfix;
+		margin: 40px 0 10px;
+		@include breakpoint($end-small) {
+			margin: 40px 0 0;
+		}
+
+		.job-matching-user {
+			h2 {
+				font-weight: 600;
+				margin-bottom: 20px;
+			}
+
+			img {
+				float: left;
+				width: 92px;
+				margin-right: 22px;
+			}
+		}
+
+		a {
+			margin-top: 20px;
+			color: #fff;
+			background: $blue;
+			border-radius: 20px;
+			padding: 4px 18px;
+			text-align: center;
+			text-transform: uppercase;
+			font-weight: 600;
+			font-size: 16px;
+		}
+	}
+
+	#job-matching-filters {
+		margin-bottom: 40px;
+
+		fieldset {
+			width: 100%;
+		}
+
+		.expandable-parent a {
+			// display: block;
+			// border: 2px solid #c2c2c2;
+			// color: #666;
+			// padding: 15px 25px;
+			// margin: 4px 0;
+			// text-transform: uppercase;
+			// font-weight: 700;
+			-webkit-appearance: none;
+			background: none;
+			color: inherit;
+			border-bottom: 1px solid #d0d1d3;
+			padding: 15px;
+			font-family: "geogrotesque",sans-serif;
+			font-weight: 300;
+			font-size: 24px;
+			cursor: pointer;
+			outline: inherit;
+			display: inherit;
+			color: #333333;
+			text-decoration: none;
+			width: 100%;
+			text-align: left;
+
+			&:focus,
+			&:hover {
+				color: $blue;
+			}
+
+			&:after {
+				color: $blue;
+			}
+
+			&.expandable-childlist-open {
+				margin-top: -10px;
+			}
+		}
+	}
+
+	.left {
+		@include breakpoint($end-small) {
+			width: calc(40% - 25px);
+		}
+		@include breakpoint(1000px) {
+			width: calc(40% - 60px);
+		}
+	}
+
+	.right {
+		@include breakpoint($end-small) {
+			width: 60%;
+		}
+	}
+
+	.job-matching-location {
+	     input {
+	         border: 1px solid #c2c2c2;
+	     }
+	}
+}
+
 .job-matching-user {
     img {
         width: 100px;
         margin-right: 10px;
     }
+}
+
+.job-matching-filter-list input[type="checkbox"]:checked+label {
+	background: $blue;
+}
+
+/* =================================================================
+Job Alert Management Page
+================================================================= */
+#ja-mgmt {
+
+	.wrapper {
+		margin: 30px auto 0;
+		@include breakpoint($end-small) {
+			margin: 50px auto 30px;
+		}
+	}
+
+	h1 {
+		font-family: $geogrotesque-font;
+		font-weight: $weight-semi-bold;
+		font-size: 17px;
+	}
+
+	.content-wrapper {
+		margin-top: 35px;
+	}
+
+	#job-alert-list {
+		margin: 15px 0;
+		@include breakpoint($end-small) {
+			float: left;
+			width: 49%;
+			margin: 0 0 15px;
+		}
+
+		.no-subscriptions {
+			font-size: 13px;
+		}
+
+		li {
+			margin: 15px 0;
+		}
+
+		button {
+			display: block;
+			background: $primary;
+			color: #fff;
+			font-weight: bold;
+			padding: 7px;
+			margin-top: 5px;
+		}
+	}
+
+	#job-alert-list-editor {
+		margin-bottom: 30px;
+		background-color: #e1eff2;
+		padding: 20px;
+		clear: both;
+		padding-bottom: 70px;
+		@include clearfix;
+		@include breakpoint($end-small) {
+			padding-bottom: 25px;
+		}
+
+		h1 {
+			margin: 15px 0;
+		}
+
+		label {
+			font-size: 14px;
+			display: block;
+			margin-bottom: 5px;
+		}
+
+		input {
+			border: 1px solid #ccc;
+			border-radius: 2px;
+			width: 100%;
+			height: 37px;
+			font-size: 14px;
+		}
+
+		button {
+			border-radius: 0;
+			background-color: #fff;
+			font-size: 15px;
+			font-weight: normal;
+			padding: 0.5em 1em;
+			color: #000;
+			border: 0;
+			float: right;
+			margin-right: 35px;
+		}
+
+		p {
+			font-size: 15px;
+			margin-bottom: 15px;
+		}
+	}
+
+	.job-alert-list-category {
+		@include breakpoint($end-small) {
+			float: left;
+			width: calc(50% - 30px);
+			margin-top: 10px;
+		}
+	}
+
+	.job-alert-list-location {
+		@include breakpoint($end-small) {
+			float: right;
+			width: calc(50% - 30px);
+			margin-top: 10px;
+		}
+	}
+
+	#job-alert-unsubscribe {
+		margin-bottom: 30px;
+		@include breakpoint($end-small) {
+			float: right;
+			width: 49%;
+		}
+
+		p {
+			font-size: 15px;
+			margin: 15px 0;
+		}
+
+		button {
+			border: 1px solid $blue;
+			border-radius: 30px;
+			font-family: "geogrotesque",sans-serif;
+			padding: 10px 0;
+			display: block;
+			color: $blue;
+			font-weight: $weight-semi-bold;
+			text-align: center;
+			width: 150px;
+
+			&:after {
+				content: " ";
+		    background: url(../v2_0/img/blue-arrow.png) no-repeat;
+		    display: inline-block;
+		    width: 9px;
+		    height: 15px;
+		    margin: 0 0 0 8px;
+		    vertical-align: middle;
+			}
+		}
+	}
+}
+
+
+
+
+
+/* =================================================================
+Secondary page styles
+================================================================= */
+
+#error,
+#Unsubscribe,
+#verify {
+
+	.wrapper {
+		padding: 30px 20px 40px;
+		@include breakpoint($end-small) {
+			padding: 50px 20px 60px;
+		}
+			h1 {
+				font-size: 36px;
+				font-family: $geogrotesque-font;
+				@include breakpoint($end-small) {
+					font-size: 48px;
+				}
+			}
+
+			p {
+				font-weight: 100;
+			}
+
+			a {
+				 color: #0000FF;
+				 text-decoration: underline;
+			}
+
+	}
 }
 
 /* =================================================================
