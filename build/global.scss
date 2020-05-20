@@ -4,12 +4,12 @@
 @import '../../3461/shared/scss/social-icons';
 
 /*!
-                Title:    GoDaddy - FULL TB 2.0
+                Title:    Baxter - FULL TB 2.0
                 Author:   TMP Worldwide - Louisville, KY
                     Brett Harrison
                     brett.harrison@tmp.com
-                Initial Dev Start: 1/2/2020
-                Initial Dev End: 1/29/2020
+                Initial Dev Start: 5/2/2020
+                Initial Dev End: 5/20/2020
 
 */
 
@@ -492,6 +492,67 @@ a.access-link {
 	}
 }
 
+.x-left {
+	position: relative;
+
+	&:after {
+
+
+		@include breakpoint($end-small) {
+			background-image: url("../v2_0/img/blue-x.png");
+			background-position: 50%;
+			background-size: 150%;
+			content: "";
+			height: 115vh;
+			left: -1.5rem;
+			pointer-events: none;
+			position: absolute;
+			top: 0;
+			width: 115vw;
+			z-index: -1;
+			background-repeat: no-repeat;
+			webkit-transform: translate3d(-75%,-50%,0);
+	    transform: translate3d(-75%,-50%,0);
+			background-size: contain;
+			height: 100vmax;
+			width: 88vmax;
+			top: 87%;
+			left: 47%;
+		}
+	}
+}
+
+.x-right {
+	position: relative;
+
+	&:after {
+
+
+		@include breakpoint($end-small) {
+			background-image: url("../v2_0/img/blue-x.png");
+			background-position: right;
+			background-size: cover;
+			content: "";
+			height: 100%;
+			right: -21px;
+			left: -21px;
+			pointer-events: none;
+			position: absolute;
+			top: 0;
+			width: 110%;
+			z-index: -1;
+			background-repeat: no-repeat;
+			-webkit-transform: translate3d(-25%,-50%,0);
+	    transform: translate3d(-25%,-50%,0);
+			background-size: contain;
+			height: 100vmax;
+			width: 88vmax;
+			top: 70%;
+			left: 87%;
+		}
+	}
+}
+
 
 /*! =================================================================
 Helpers
@@ -565,6 +626,15 @@ main {
     width: 100%;
     @include clearfix;
     margin: 0 auto;
+
+		#home & {
+			background: url("../v2_0/img/x-bg2.png") no-repeat;
+			background-size: cover;
+			background-position: 100% 127px;
+			@include breakpoint($end-small) {
+				background: none;
+			}
+		}
 }
 
 .main {
@@ -777,43 +847,53 @@ header {
 Banners
 ================================================================= */
 .banner {
-		position: relative;
+	position: relative;
 
 	&__wrap {
 		position: relative;
-
 	}
 
 	&__image {
-			padding-bottom: 50%;
+		padding-bottom: 50%;
+		background-size: cover;
+		background-position: center;
+		@include breakpoint(385px) {
+			padding-bottom: 38%;
+		}
+
+		#Unsubscribe &,
+		#error &,
+		#home &,
+		#ja-mgmt &,
+		#job-match &,
+		#sitemap &,
+		#verify & {
+			background: url("../v2_0/img/banners/banner-home.jpg") no-repeat;
 			background-size: cover;
 			background-position: center;
-			@include breakpoint(385px) {
-				padding-bottom: 38%;
-			}
+		}
 
+		#job-location &,
+		#search & {
+			background: url("../v2_0/img/banners/banner-sr.jpg") no-repeat;
+			background-size: cover;
+			background-position: center;
+		}
 
-			#home &,
-			#error &,
-			#Unsubscribe &,
-			#verify &,
-			#ja-mgmt &,
-			#job-match & {
-				background: url("../v2_0/img/banners/banner-home.jpg") no-repeat;
-				background-size: cover;
-				background-position: center;
-			}
-			#search &,
-			#job-location & {
-				background: url("../v2_0/img/banners/banner-sr.jpg") no-repeat;
-				background-size: cover;
-				background-position: center;
-			}
-			#job & {
+		#job & {
+			background: url("../v2_0/img/banners/banner-jd-sm.jpg") no-repeat;
+			background-size: cover;
+			padding-bottom: 43%;
+			@include breakpoint(500px) {
 				background: url("../v2_0/img/banners/banner-jd.jpg") no-repeat;
 				background-size: cover;
-				background-position: center;
+				padding-bottom: 31%;
+				background-position: right;
 			}
+			@include breakpoint(1500px) {
+				padding-bottom: 23%;
+			}
+		}
 	}
 
 	&__text {
@@ -826,19 +906,14 @@ Banners
 		font-size: 33px;
 		position: absolute;
 		top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+		left: 50%;
+		transform: translateX(-50%) translateY(-50%);
 		padding: 0 15px;
 		@include breakpoint($end-small) {
 			display: none;
 		}
 	}
-
-
 }
-
-
-
 
 /* =================================================================
 Footer
@@ -929,47 +1004,41 @@ Saved Jobs Number
 
 .saved-jobs-number {
 
-
-
-
-
-	&__link {
+	&__button {
 		background: url("../v2_0/img/star.png") no-repeat;
 		width: 41px;
-    height: 40px;
+		height: 40px;
 		background-color: transparent;
 		background-position: 0 0;
-    background-repeat: no-repeat;
-		display: block;
+		background-repeat: no-repeat;
+		display: flex;
+		align-items: center;
+		padding-top: 7px;
 		position: relative;
-		// top: 0;
-
-
 		&:after {
 			content: "Saved Jobs";
-			display: flex;
-			align-items: center;
-			height: 100%;
-			width: 100px;
+
+
+			width: 79px;
 			position: absolute;
-    	left: 48px;
+			left: 48px;
 			font-size: 16px;
 			font-family: $geogrotesque-font;
 			font-weight: $weight-bold;
 		}
-
 	}
+
 	&__total {
 		position: absolute;
 		top: 54%;
- 		left: 50%;
- 		transform: translateX(-50%) translateY(-50%);
+		left: 50%;
+		transform: translateX(-50%) translateY(-50%);
 		font-size: 16px;
 		font-family: $geogrotesque-font;
 		font-weight: $weight-bold;
 	}
 
-	> div {
+	&__toggle {
 		margin-top: 20px;
 		display: none;
 		@include breakpoint(1000px) {
@@ -977,30 +1046,27 @@ Saved Jobs Number
 			background: #fff;
 			width: 400px;
 			left: -260px;
-
 		}
 
 		ul {
-			margin: 0;
-			display: block;
+			margin: 0 !important;
+			display: block !important;
 			text-align: left;
 		}
 
 		li {
-			width: 100%;
+			width: 100% !important;
 			margin-bottom: 10px !important;
 
-
 			a {
-				text-align: left;
+				text-align: left !important;
 			}
 
 			span {
-				text-align: left;
+				text-align: left !important;
 			}
 		}
 	}
-
 }
 
 /*! =================================================================
@@ -1044,6 +1110,8 @@ Job Lists Tabs
 	@include breakpoint($max-width) {
 		margin: 0 0 100px;
 	}
+
+
 }
 
 .tab-link {
@@ -1123,6 +1191,7 @@ Job Lists/Related Jobs/Saved Jobs Styles
     box-shadow: 0px 0px 16px -3px #000000;
 		padding: 25px 30px;
 		margin: 0 -15px 10px;
+		background: #fff;
 		@include breakpoint(1000px) {
 			display: flex;
 			justify-content: space-between;
@@ -1485,6 +1554,13 @@ search form
 		&[type="search"] {
 			box-sizing: border-box;
 		}
+	}
+
+	select {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 544.4 980'%3E%3Cpath d='M272.2 0L0 381.1h544.4L272.2 0zm0 980l272.2-381.1H0L272.2 980z' fill='%234b4c4c'/%3E%3C/svg%3E");
+		background-size: 8px 17px;
+		background-repeat: no-repeat;
+		background-position: 94% 48%;
 	}
 
 	&[data-use-location-pin="true"] {
@@ -2161,13 +2237,12 @@ search results - search filters
 			}
 
 			&:not([disabled]):checked + label {
-				background: $primary;
-				color: #fff;
+
 			}
 
 			&:not([disabled]):focus:checked + label,
 			&:not([disabled]):hover:checked + label {
-				background: lighten($primary, 8%);
+
 			}
 		}
 
@@ -2246,6 +2321,39 @@ search results - search filters
 	}
 }
 
+#applied-filters {
+
+	h2 {
+		text-transform: capitalize;
+		font-family: $geogrotesque-font;
+		font-weight: $weight-light;
+		font-size: 24px;
+	}
+
+	.filter-button {
+		border: 1px solid #039;
+    border-radius: 30px;
+    font-family: "geogrotesque",sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 10px 20px;
+    display: block;
+    margin: 10px 0;
+    color: #039;
+    font-weight: 600;
+
+		&:after {
+			content: " ";
+			background: url(../v2_0/img/blue-arrow.png) no-repeat;
+			display: inline-block;
+			width: 9px;
+			height: 15px;
+			margin: 0 0 0 8px;
+			vertical-align: middle;
+		}
+	}
+}
+
 /* =================================================================
 Job alerts form
 ================================================================= */
@@ -2317,6 +2425,13 @@ Job alerts form
 			-webkit-appearance: none;
 			padding: 0 15px !important;
 			font-size: 14px;
+		}
+
+		select {
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 544.4 980'%3E%3Cpath d='M272.2 0L0 381.1h544.4L272.2 0zm0 980l272.2-381.1H0L272.2 980z' fill='%234b4c4c'/%3E%3C/svg%3E");
+			background-size: 8px 17px;
+			background-repeat: no-repeat;
+			background-position: 94% 48%;
 		}
 
 		fieldset {
@@ -2662,17 +2777,7 @@ job details - style overrides for ATS description
 
 	&[data-save-jobs="true"] .js-save-job-btn,
 	#save-job {
-		// float: right;
-		// background-image: url("../../../img/client/star-icon-gray.png");
-		// background-repeat: no-repeat;
-		// background-position: right;
-		// background-color: transparent;
-		// height: 25px;
-		// border: none;
-		// text-align: right;
-		// padding-right: 35px;
-		// opacity: .9;
-		// margin-bottom: 1em;
+
 		&:focus,
 		&:hover {
 			opacity: 1;
@@ -2852,12 +2957,11 @@ Job Locations page
                 text-align: center;
                 text-transform: uppercase;
                 display: block;
-            	background: $blue;
-        		text-transform: uppercase;
-        		color: #fff;
-        		// font-weight: $bold;
-        		font-size: 20px;
-        		text-align: center;
+	            	background: $blue;
+		        		text-transform: uppercase;
+		        		color: #fff;
+		        		font-size: 20px;
+		        		text-align: center;
 
             }
         }
@@ -3043,13 +3147,7 @@ job matching page
 		}
 
 		.expandable-parent a {
-			// display: block;
-			// border: 2px solid #c2c2c2;
-			// color: #666;
-			// padding: 15px 25px;
-			// margin: 4px 0;
-			// text-transform: uppercase;
-			// font-weight: 700;
+
 			-webkit-appearance: none;
 			background: none;
 			color: inherit;
@@ -3297,6 +3395,63 @@ Secondary page styles
 
 	}
 }
+
+/* =================================================================
+Sitemap page styles
+================================================================= */
+
+#sitemap {
+
+	.wrapper {
+		margin: 30px auto;
+		@include breakpoint($end-small) {
+			margin: 30px auto 60px;
+		}
+	}
+
+	.job-location, .job-category, .job-keyword {
+
+		h2 {
+			font-family: $geogrotesque-font;
+			font-weight: $weight-light;
+			font-size: 26px;
+			margin-bottom: 10px;
+			@include breakpoint($end-small) {
+				font-size: 36px;
+			}
+		}
+	}
+
+  .job-location ul, .job-category ul, .job-keyword ul, .sitemap-cp ul {
+    list-style: none;
+    margin: 0 0 20px 0;
+
+		li {
+			display: inline-block;
+			width: 100%;
+			margin-bottom: 3px;
+		}
+
+		a {
+				font-size: 16px;
+			b {
+				color: $blue;
+			}
+		}
+
+    @include breakpoint($mid-small) { // could use mid-small
+      -webkit-column-count: 2;/* Chrome, Safari, Opera */
+      -moz-column-count: 2;/* Firefox */
+      column-count: 2;
+    }
+
+    @include breakpoint($end-small) { // could use end-mall
+      -webkit-column-count: 3;/* Chrome, Safari, Opera */
+      -moz-column-count: 3;/* Firefox */
+      column-count: 3;
+    }
+  }
+} // end sitemap page
 
 /* =================================================================
 maintenance page

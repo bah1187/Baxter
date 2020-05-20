@@ -71,12 +71,12 @@ $(function(){
   });
 });
 
-
-$(function(){
-  $('.js-number-button').click(function(){
-   $('.js-number-toggle').slideToggle('fast');
-  });
-});
+// 
+// $(function(){
+//   $('.js-number-button').click(function(){
+//    $('.js-number-toggle').slideToggle("fast");
+//   });
+// });
 
 
 /* =========================================================================
